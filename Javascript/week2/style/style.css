@@ -1,0 +1,106 @@
+.title{
+	opacity: 0.3;
+
+}
+
+.outcome {
+	display:block;
+	text-align: center;
+	position: relative;
+	top:3vh;
+	width: 62.5vw;
+	height: 55vh;
+	margin: 0 auto;
+	z-index: 1;
+}
+
+#player{
+	font-family: 'Hind', sans-serif;
+	text-align: center;
+	color:#5f5f5f;
+	font-size: 20px;
+	display:block;
+	background: url('../img/stone-l.png')no-repeat;
+	background-size:100%;
+	width:50%;
+	height:100%;
+	z-index:2;
+	position: relative;
+	float: left;
+}
+
+#computer{
+	font-family: 'Hind', sans-serif;
+	text-align: center;
+	color:#5f5f5f;
+	font-size: 20px;
+	display:block;
+	background: url('../img/stone-r.png')no-repeat;
+	background-size:100%;
+	width:50%;
+	height:100%;
+	z-index:2;
+	position: relative;
+	float: left;
+}
+
+.playerchoice{
+	clear: both;
+	margin: auto;
+	position: relative;
+	top:5vh;
+	height: 195px;
+}
+
+p{
+	font-family: 'Hind', sans-serif;
+	font-size: 30px;
+	font-weight: bold;
+	letter-spacing: 1.4px;
+	text-align: center;
+	color: #4a4a4a;
+	margin-top: 20px;
+	margin-bottom: 5px;
+}
+
+.choice-container{
+	display: block;
+	width:510px;
+	position: relative;
+	height: 130px;
+	margin-top: 5px;
+	margin:auto;
+}
+
+#choose-paper{
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-left: 20px;
+	float: right;
+	height:130px;
+	width:130px;
+}
+
+
+#choose-scissors{
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-left: 20px;
+	float: right;
+	height:130px;
+	width:130px;
+}
+
+
+#choose-stone{
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-left: 20px;
+	float: right;
+	height:130px;
+	width:130px;
+}
+
+
+
+
