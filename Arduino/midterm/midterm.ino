@@ -63,11 +63,6 @@ void setup(){
     delay(500);
   }
 
-  
-}  
-
-    
-void loop() {  
   color(); 
   Serial.print("R Intensity:");  
   Serial.print(red, DEC);  
@@ -98,6 +93,12 @@ void loop() {
   delay(300);   
   strip.setPixelColor (0, strip.Color(0, 0, 0));
   
+  
+  
+}  
+
+    
+void loop() {  
   
  }  
     
