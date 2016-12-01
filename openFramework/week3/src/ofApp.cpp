@@ -37,13 +37,18 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     
-    line.draw();
+    
+    
+    for (auto line : lines) {
+        ofDrawLine(line.a, line.b);
+        curve.draw();
+    }
     
     float gridsize = 700;
     
     cam.begin();
     
-    ofDrawGrid(gridsize/2.0, 8.0f, false, false, false, true);
+//    ofDrawGrid(gridsize/2.0, 8.0f, false, false, false, true);
     
     ofPushMatrix();
     ofMultMatrix(tabmtx);
@@ -69,17 +74,26 @@ void ofApp::draw(){
     
     cam.end();
 
-    
+
     
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+    
+    for (auto point : drawnPoints){
+        if (key == OF_KEY_RETURN){
+            lines.clear();
+            curve.clear();
+        }
+    }
+
 
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
+
 
 }
 
@@ -107,39 +121,80 @@ void ofApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-
-    ofPoint pt;
-    pt.set(x,y);
     
     TabletData& data = ofxTablet::tabletData;
-    float p= data.pressure*1000;
-    float angle = 0;
-    while (angle < TWO_PI) {
-        line.curveTo(x, y+ p * sin(angle / 20),0 );
-        angle ++;
-    };
+        float p1= data.pressure*300;
     
+    for (auto point : drawnPoints){
+        
+        //----draw verticle line----
+        ofPoint mouse;
+        ofPoint mStart;
+        mouse.set(x,y+p1);
+        mStart.set(x, y);
+        
+        Line lineTemp;
+        lineTemp.a = mStart;
+        lineTemp.b = mouse;
+        lines.push_back(lineTemp);
+        
+        //----draw curve line----//
+        ofPoint curvePt;
+        curvePt.set(x, y+p1);
+        
+        Line curveTemp;
+        curveTemp.curvePt = curvePt;
+        curve.addVertex(curvePt);
+        lines.push_back(curveTemp);
+        
+        }
     
+    drawnPoints.push_back(ofPoint(x,y));
+    
+ 
+
+    
+   
+
+}
+
+
+
+
+//--------draw wave line----------
+    
+//    ofPoint pt;
+//    TabletData& data = ofxTablet::tabletData;
+//    float p1= data.pressure*100;
+//
+//    pt.set(x,y+p1);
+//    
 //    line.addVertex(pt);
     
-//    float angle = 0;
-//    while (angle < TWO_PI ) {
-//        line.curveTo(100*cos(angle), 0, 100*sin(angle));
-//        line.curveTo(300*cos(angle), 300, 300*sin(angle));
-//        angle += TWO_PI / 30;
-//    }
+//------draw wave--------------
     
-}
+//    float p2= data.pressure*1000;
+//    float angle = 0;
+//    while (angle < TWO_PI) {
+//        line.curveTo(x, y+ p2 * sin(angle / 20),0 );
+//        angle ++;
+//    };
+    
+
+//}
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
     
-    line.clear();
 
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
+    
+    Line curveTemp;
+    lines.push_back(curveTemp);
+
     
 }
 
